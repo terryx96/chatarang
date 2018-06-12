@@ -4,10 +4,16 @@ import './App.css';
 import Main from './Main';
 
 class App extends Component {
+  state = {
+    user: {
+      uid: "321935",
+      userName: "tWade",
+    }
+  }
   render() {
     return (
       <div className="App">
-        <Main />
+        <Main user = {this.state.user}/>
       </div>
     );
   }
