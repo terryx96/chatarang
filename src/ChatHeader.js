@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class ChatHeader extends Component {
-    render(){
+//this is a stateless functional componenet
+const ChatHeader = () => {
         return (
             <div className = "ChatHeader">
                 <div className="roomInfo">
@@ -10,7 +10,6 @@ class ChatHeader extends Component {
                 </div>
             </div>
         )
-    }
 }
 
 export default ChatHeader;
