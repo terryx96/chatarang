@@ -5,5 +5,29 @@ body {
   font-family: Raleway, sans-serif;
 }
 
+.RoomList h2 {
+  font-size: 1rem;
+}
+
+.RoomList ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.RoomList li {
+  margin-bottom: 0.5rem;
+}
+.RoomList li a {
+  display: block;
+  color: whitesmoke;
+  text-decoration: none;
+}
+.RoomList li a::before {
+  content: '# ';
+}
+.RoomList li a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
 
 
