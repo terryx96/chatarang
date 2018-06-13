@@ -11,16 +11,6 @@ class Chat extends Component {
         super();
         this.state = {
             messages: [
-                {
-                    id: ++id,
-                    userName: 'Navy Davey',
-                    body: 'Yo, party at Fretless HQ. Alex will be there, how bout you?',
-                },
-                {
-                    id: ++id,
-                    userName: 'Terry',
-                    body: 'Maybe man, I got stuff to do.',
-                },
             ],
         }
     }
@@ -28,7 +18,7 @@ class Chat extends Component {
         return (
             <div className = "Chat" style = {styles.chat}>
                 <ChatHeader />
-                <MessageList messages = {this.state.messages}/>
+                <MessageList messages = {this.state.messages} user = {this.props.user}/>
                 <MessageForm addMessage = {this.addMessage} deleteMessage = {this.clear}/>
             </div>
         )
@@ -39,6 +29,7 @@ class Chat extends Component {
         messages.push({
             id: ++id,
             userName: this.props.user.userName,
+            email: 'terry.wade@valpo.edu',
             body,
         });
         this.setState({messages});

@@ -11,6 +11,7 @@ class App extends Component {
     user: {
       uid: ++id,
       userName: "",
+      email: "",
     }
   }
   render() {
@@ -18,19 +19,24 @@ class App extends Component {
       <div className="App">
         {
           (this.state.user.userName) ? 
-        ( <Main user = {this.state.user} /> ) :
+        ( <Main user = {this.state.user} signOut = {this.signOut}/> ) :
         (<SignIn signIn = {this.signIn}/>)
         }
       </div>
     );
   }
 
-  signIn = (name) =>{
+  signIn = (email) =>{
     const user = {
       uid: "",
-      userName: name,
+      userName: email.substring(0, email.indexOf("@")),
+      email: email,
     }
     this.setState({user});
+  }
+
+  signOut = () => {
+    this.setState({user: {}});
   }
 }
 

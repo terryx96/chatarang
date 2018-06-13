@@ -30,7 +30,9 @@ class MessageForm extends Component {
                     onChange = {this.handleChange}
                     autoFocus
                     />
-                <button type = "submit">Send</button>
+                <button type = "submit">           
+                 <i class="far fa-paper-plane" title="Send"></i>
+                </button>
             </form>
         )
     }

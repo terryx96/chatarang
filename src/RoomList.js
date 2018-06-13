@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {StyleSheet, css} from 'aphrodite';
 import Room from './Room';
 
 
@@ -12,7 +13,7 @@ class RoomList extends Component {
     }
     render(){
         return(
-            <nav className="RoomList" style = {styles.nav}>
+            <nav className={`RoomList ${css(styles.nav)}`} >
                 <h2>Rooms</h2>
                 <ul>
                     {this.state.rooms.map(r => <Room name = {r.name} key = {r.name}/>)}
@@ -22,10 +23,10 @@ class RoomList extends Component {
     }
 }
 
-const styles = {
+const styles = StyleSheet.create({
     nav: {
-        padding: "0 1rem",
-    }
-}
+        padding: '0 1rem',
+    },
+})
 
 export default RoomList;

@@ -71,3 +71,26 @@ body {
   border: 1px solid white;
 }
 
+.UserInfo {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+.UserInfo .Avatar {
+  margin-right: 0.5rem;
+}
+.UserInfo .user {
+  flex: 1;
+}
+.UserInfo a {
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.2rem;
+  transition: color 0.25s ease-out;
+}
+.UserInfo a:hover {
+  color: white;
+}
+

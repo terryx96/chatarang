@@ -2,16 +2,13 @@ import React from 'react';
 import RoomList from './RoomList';
 
 import Avatar from './Avatar';
-
-const UserInfo = ({user}) => {
+import SignOut from './SignOut'
+const UserInfo = ({user, signOut}) => {
     return (
-        
             <div className="UserInfo" style = {styles.children}>
                 <Avatar user = {user} email = "terry.wade@valpo.edu"/>
-                <div className="user">{user.userName}</div>
-                <a href="#">
-                <i className="fas fa-sign-out-alt" styles = {styles.icon}></i>
-                </a>
+                <span className="user">{user.userName} </span>
+                <SignOut signOut = {signOut} />
                  </div>
     )
 }

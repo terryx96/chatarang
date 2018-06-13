@@ -23,10 +23,11 @@ class SignIn extends Component {
                     <div>
                         <input 
                         style = {styles.input}
-                        type = "text"
-                        placeholder = "Username"
+                        type = "email"
+                        placeholder = "email"
                         value = {this.state.name}
                         onChange = {this.handleChange}
+                        autoFocus
                         />
                     </div>
                     <div style = {styles.inside}></div>
@@ -34,7 +35,7 @@ class SignIn extends Component {
                         <input
                         style = {styles.input}
                         type = "password"
-                        placeholder = "Password"
+                        placeholder = "password"
                         />
                     </div>
                     <button 
