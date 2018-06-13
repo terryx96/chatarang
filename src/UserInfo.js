@@ -3,12 +3,12 @@ import RoomList from './RoomList';
 
 import Avatar from './Avatar';
 
-const UserInfo = (props) => {
+const UserInfo = ({user}) => {
     return (
         
             <div className="UserInfo" style = {styles.children}>
-                <Avatar user = {props.user} email = "terry.wade@valpo.edu"/>
-                <div className="user">{props.user.userName}</div>
+                <Avatar user = {user} email = "terry.wade@valpo.edu"/>
+                <div className="user">{user.userName}</div>
                 <a href="#">
                 <i className="fas fa-sign-out-alt" styles = {styles.icon}></i>
                 </a>
