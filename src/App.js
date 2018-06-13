@@ -14,6 +14,14 @@ class App extends Component {
       email: "",
     }
   }
+
+  componentDidMount(){
+    const user = JSON.parse(localStorage.getItem('user'));
+    if(user){
+      this.setState({user});
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -33,10 +41,12 @@ class App extends Component {
       email: email,
     }
     this.setState({user});
+    localStorage.setItem('user', JSON.stringify(user));
   }
 
   signOut = () => {
     this.setState({user: {}});
+    localStorage.removeItem('user');
   }
 }
 

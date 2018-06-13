@@ -59,6 +59,7 @@ const styles = {
         height: "100%",
     },
     overlay: {
+        borderRadius: "1.5rem",
         textAlign: "center",
         backgroundColor: "white",
         width: "400px",
@@ -68,7 +69,6 @@ const styles = {
         left: "50%",
         marginTop: "-200px",
         marginLeft: "-200px",
-        outline: "1px solid rgba(100,100,100, 0.8)",
         boxShadow: "10px 5px 50px gray, -10px -5px 50px gray",
         zIndex: 1,
     },
@@ -87,7 +87,7 @@ const styles = {
     },
     buttonElement: {
         fontSize: "1.5rem",
-        backgroundColor: "#1A8FE3",
+        backgroundColor: "#550055",
         color: "white",
         marginTop: "20px",
         paddingLeft: "1rem",
