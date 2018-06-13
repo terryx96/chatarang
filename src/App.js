@@ -2,20 +2,35 @@ import React, { Component } from 'react';
 
 import './App.css';
 import Main from './Main';
+import SignIn from './SignIn';
+
+let id = 0;
 
 class App extends Component {
   state = {
     user: {
-      uid: "321935",
-      userName: "tWade",
+      uid: ++id,
+      userName: "",
     }
   }
   render() {
     return (
       <div className="App">
-        <Main user = {this.state.user}/>
+        {
+          (this.state.user.userName) ? 
+        ( <Main user = {this.state.user} /> ) :
+        (<SignIn signIn = {this.signIn}/>)
+        }
       </div>
     );
+  }
+
+  signIn = (name) =>{
+    const user = {
+      uid: "",
+      userName: name,
+    }
+    this.setState({user});
   }
 }
 

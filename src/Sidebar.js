@@ -12,7 +12,7 @@ const Sidebar = (props) => {
                 ></div>
                 <div className="user">{props.user.userName}</div>
                 <a href="#">
-                <i className="fas fa-sign-out-alt"></i>
+                <i className="fas fa-sign-out-alt" styles = {styles.icon}></i>
                 </a>
                  </div>
                 <h1 style = {{
@@ -27,7 +27,7 @@ const Sidebar = (props) => {
 
 const styles = {
     sidebar:{
-        backgroundColor: "#333344",
+        backgroundColor: "#550055",
         color: "rgba(255, 255, 255, 0.8)",
         width: "12rem",
         padding:" 1rem 0",
@@ -42,6 +42,11 @@ const styles = {
         fontSize: '1.2rem',
         marginTop: 0,
     },
+    icon:{
+        display: "flex",
+        flexDirection: "row",
+        float: "right",
+    }
 
 }
 

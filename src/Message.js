@@ -1,10 +1,12 @@
 import React from 'react';
+import Time from './Time';
 
 const Message = (props) => {
     return (
         <div className = "Message" style = {styles.message}>
             <span style = {styles.details}>
-            {props.message.userName}: {props.message.body}
+            <div style = {styles.user}>{props.message.userName} <Time /></div>
+            <div>{props.message.body}</div>
             </span>
         </div>
     )
@@ -21,7 +23,20 @@ const styles = {
     details: {
         flex: 1,
         paddingLeft: "0.5rem",
+    },
+    metaData:{
+        display: "flex",
+        alighnItems: "baseline",
+    },
+    user:{
+        fontWeight: "bold",
+        marginRight: "0.5rem",
+    },
+    time:{
+        color: "#999",
+        fontSize: "0.8rem",
     }
+
 
 }
 

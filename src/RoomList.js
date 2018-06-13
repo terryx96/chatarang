@@ -22,4 +22,8 @@ class RoomList extends Component {
     }
 }
 
+const styles = {
+    
+}
+
 export default RoomList;
