@@ -3,20 +3,23 @@ import React, {Component} from 'react';
 import ChatHeader from './ChatHeader';
 import MessageList from './MessageList';
 import MessageForm from './MessageForm';
+
+let id = 0;
+
 class Chat extends Component {
     constructor(){
         super();
         this.state = {
             messages: [
                 {
-                    id: 1,
-                    userName: 'tWade',
-                    body: 'Chatting up a storm, dawg',
+                    id: ++id,
+                    userName: 'Navy Davey',
+                    body: 'Yo, party at Fretless HQ. Alex will be there, how bout you?',
                 },
                 {
-                    id: 2,
-                    userName: 'kKling',
-                    body: 'Yeah you is, b',
+                    id: ++id,
+                    userName: 'Terry',
+                    body: 'Maybe man, I got stuff to do.',
                 },
             ],
         }
@@ -26,7 +29,7 @@ class Chat extends Component {
             <div className = "Chat" style = {styles.chat}>
                 <ChatHeader />
                 <MessageList messages = {this.state.messages}/>
-                <MessageForm addMessage = {this.addMessage}/>
+                <MessageForm addMessage = {this.addMessage} deleteMessage = {this.clear}/>
             </div>
         )
     }
@@ -34,7 +37,7 @@ class Chat extends Component {
     addMessage = (body) => {
         const messages = [...this.state.messages];
         messages.push({
-            id: Date.now(),
+            id: ++id,
             userName: this.props.user.userName,
             body,
         });

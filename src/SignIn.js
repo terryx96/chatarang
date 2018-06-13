@@ -16,7 +16,8 @@ class SignIn extends Component {
 
     render() {
          return(
-            <div className = "SignIn" style = {styles.overlay}>
+            <div className = "SignIn" style = {styles.backdrop}>
+                <div style = {styles.overlay}>
                 <div style = {styles.inside}>Sign into Chatarang</div>
                 <form onSubmit = {this.handleSubmit}>
                     <div>
@@ -43,12 +44,19 @@ class SignIn extends Component {
                     >
                     Log in</button>
                 </form>
+                </div>
             </div>
         )
     }
 }
 
 const styles = {
+    backdrop:{
+        backgroundColor: "black",
+        zIndex: 0,
+        width: "100%",
+        height: "100%",
+    },
     overlay: {
         textAlign: "center",
         backgroundColor: "white",
@@ -61,6 +69,7 @@ const styles = {
         marginLeft: "-200px",
         outline: "1px solid rgba(100,100,100, 0.8)",
         boxShadow: "10px 5px 50px gray, -10px -5px 50px gray",
+        zIndex: 1,
     },
     inside: {
         paddingTop: "20px",

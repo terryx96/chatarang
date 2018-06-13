@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import Room from './Room';
 
 
-
 class RoomList extends Component {
     state = {
         rooms: [
@@ -12,10 +11,10 @@ class RoomList extends Component {
     }
     render(){
         return(
-            <nav className="RoomList">
+            <nav className="RoomList" style = {styles.nav}>
                 <h2>Rooms</h2>
                 <ul>
-                    {this.state.rooms.map(r => <Room name = {r.name} />)}
+                    {this.state.rooms.map(r => <Room name = {r.name} key = {r.name}/>)}
                 </ul>
             </nav>
         )
@@ -23,7 +22,9 @@ class RoomList extends Component {
 }
 
 const styles = {
-    
+    nav: {
+        padding: "0 1rem",
+    }
 }
 
 export default RoomList;

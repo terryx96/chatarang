@@ -5,7 +5,7 @@ const Message = (props) => {
     return (
         <div className = "Message" style = {styles.message}>
             <span style = {styles.details}>
-            <div style = {styles.user}>{props.message.userName} <Time /></div>
+            <div style = {styles.user}>{props.message.userName} 1:31 PM</div>
             <div>{props.message.body}</div>
             </span>
         </div>
