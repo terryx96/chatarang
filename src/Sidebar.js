@@ -1,20 +1,12 @@
 import React from 'react';
 
 import RoomList from './RoomList';
-
+import UserInfo from './UserInfo'
 
 const Sidebar = (props) => {
         return (
               <aside className="Sidebar" style = {styles.sidebar}>
-            <div className="UserInfo" style = {styles.children}>
-                <div
-                className="Avatar"
-                ></div>
-                <div className="user">{props.user.userName}</div>
-                <a href="#">
-                <i className="fas fa-sign-out-alt" styles = {styles.icon}></i>
-                </a>
-                 </div>
+            <UserInfo user = {props.user}/>
                 <h1 style = {{
                     ...styles.children,
                     ...styles.h1,

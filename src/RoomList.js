@@ -7,6 +7,7 @@ class RoomList extends Component {
         rooms: [
             {name: "general"},
             {name: "random"},
+            {name: "the cute room",}
         ],
     }
     render(){
