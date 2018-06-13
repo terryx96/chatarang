@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import ChatHeader from './ChatHeader';
 import MessageList from './MessageList';
 import MessageForm from './MessageForm';
+import base from './base';
 
 let id = 0;
 
@@ -14,6 +15,15 @@ class Chat extends Component {
             ],
         }
     }
+
+    componentDidMount(){
+        base.syncState("terry", {
+            context: this,
+            state: "messages",
+            asArray: true,
+        });
+    }
+
     render(){
         return (
             <div className = "Chat" style = {styles.chat}>
