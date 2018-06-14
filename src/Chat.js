@@ -22,6 +22,7 @@ class Chat extends Component {
             state: "messages",
             asArray: true,
         });
+        //this.setState({messages: []})
     }
 
     componentDidUpdate(prevProps){
@@ -31,6 +32,7 @@ class Chat extends Component {
             state: "messages",
             asArray: true,
         });
+        
     }
     }
 
