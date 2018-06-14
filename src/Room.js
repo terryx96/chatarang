@@ -1,9 +1,18 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-const Room = (props) => {
-    return(
-        <li><a href="#">{props.name}</a></li>
-    )
+class Room extends Component {
+    state = {
+        name: this.props.name,
+    }
+    render(){
+        return(
+           <li><a onClick={this.setName}>{this.state.name}</a></li>
+     )
+    }
+
+    setName = () =>{
+        this.props.getName(this.state.name);
+    }
 }
 
 export default Room;

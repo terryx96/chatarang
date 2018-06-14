@@ -12,7 +12,7 @@ const Sidebar = (props) => {
                     ...styles.h1,
                 }}>
                 XTBC 18</h1>
-                <RoomList />
+                <RoomList getName = {props.getName}/>
             </aside>
         )
 }

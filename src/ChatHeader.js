@@ -1,11 +1,11 @@
 import React from 'react';
 
 //this is a stateless functional componenet
-const ChatHeader = () => {
+const ChatHeader = (props) => {
         return (
             <div className = "ChatHeader" style = {styles.chatHeader}>
                 <div className="roomInfo">
-                    <h2 style = {styles.h2}>#general</h2>
+                    <h2 style = {styles.h2}>#{props.roomName}</h2>
                     <p style = {styles.p}>Announcements and general chat</p>
                 </div>
             </div>

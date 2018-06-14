@@ -16,7 +16,7 @@ class RoomList extends Component {
             <nav className={`RoomList ${css(styles.nav)}`} >
                 <h2>Rooms</h2>
                 <ul>
-                    {this.state.rooms.map(r => <Room name = {r.name} key = {r.name}/>)}
+                    {this.state.rooms.map(r => <Room name = {r.name} key = {r.name} getName = {this.props.getName}/>)}
                 </ul>
             </nav>
         )
