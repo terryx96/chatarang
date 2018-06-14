@@ -13,7 +13,7 @@ class Main extends Component{
     render(){
         return(
             <div className = "Main" style = {styles}>
-                <Sidebar user = {this.props.user} signOut = {this.props.signOut} getName = {this.getName}/>
+                <Sidebar roomName = {this.state.roomName} user = {this.props.user} signOut = {this.props.signOut} getName = {this.getName}/>
                 <Chat user = {this.props.user} roomName = {this.state.roomName}/>
             </div>
         )

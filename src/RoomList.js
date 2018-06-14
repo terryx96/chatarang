@@ -1,22 +1,41 @@
 import React, {Component} from 'react';
 import {StyleSheet, css} from 'aphrodite';
 import Room from './Room';
-
+import base from "./base";
 
 class RoomList extends Component {
     state = {
-        rooms: [
-            {name: "general"},
-            {name: "random"},
-            {name: "the cute room",}
-        ],
+        rooms: {
+           
+        },
     }
+
+    componentDidMount(){
+        base.syncState("rooms", {
+            context: this,
+            state: "rooms",
+        })
+    }
+
+    addRoom = (room) => {
+        const rooms = {...this.state.rooms};
+        rooms[room.name] = room;
+        this.setState({rooms})
+    }
+
     render(){
         return(
             <nav className={`RoomList ${css(styles.nav)}`} >
                 <h2>Rooms</h2>
                 <ul>
-                    {this.state.rooms.map(r => <Room name = {r.name} key = {r.name} getName = {this.props.getName}/>)}
+                    {
+                        Object.keys(this.state.rooms).map(
+                            r => (
+                                <Room key = {r} getName = {this.props.getName} room = {this.state.rooms[r]} />
+                            )
+
+                        )
+                    }
                 </ul>
             </nav>
         )

@@ -13,11 +13,12 @@ class Chat extends Component {
         this.state = {
             messages: [
             ],
+            binding: null,
         }
     }
 
     componentDidMount(){
-        base.syncState(`${this.props.roomName.name}`, {
+        base.syncState(`${this.props.roomName.name}/messages`, {
             context: this,
             state: "messages",
             asArray: true,
@@ -25,16 +26,25 @@ class Chat extends Component {
         //this.setState({messages: []})
     }
 
-    // componentDidUpdate(prevProps){
-    //     if(prevProps!=this.props){
-    //     base.syncState(this.props.roomName.name, {
-    //         context: this,
-    //         state: "messages",
-    //         asArray: true,
-    //     });
-        
-    // }
-    // }
+    componentDidUpdate(prevProps){
+        if(prevProps!==this.props){
+            this.syncMessages();
+        }
+    }
+
+    syncMessages = () =>{
+        //if were syncing with something else { stop it }
+        if(this.state.binding){
+            base.removeBinding(this.state.binding);
+        }
+        const binding = base.syncState(`${this.props.roomName.name}/messages`, {
+            context: this,
+            state: "messages",
+            asArray: true,
+        });
+
+        this.setState({binding});
+    }
 
     render(){
         return (

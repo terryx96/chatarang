@@ -9,7 +9,8 @@ class MessageForm extends Component {
 
     handleSubmit = (ev) =>{
         ev.preventDefault();
-        this.props.addMessage(this.state.body);
+         this.props.addMessage(this.state.body);
+         //this.props.getMessage(this.state.body)
         this.setState({body: ""});
     }
 
@@ -31,7 +32,7 @@ class MessageForm extends Component {
                     autoFocus
                     />
                 <button type = "submit">           
-                 <i class="far fa-paper-plane" title="Send"></i>
+                 <i className="far fa-paper-plane" title="Send"></i>
                 </button>
             </form>
         )

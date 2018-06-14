@@ -7,13 +7,15 @@ class Room extends Component {
     }
     render(){
         return(
-           <li><a onClick={this.setName}>{this.state.name}</a></li>
+           <li><a onClick={this.handleClick}>{this.props.room.name}</a></li>
      )
     }
 
-    setName = () =>{
-        this.props.getName(this.state.name);
+    handleClick = (ev) =>{
+        ev.preventDefault();
+        this.props.getName(this.props.room);
     }
+
     
 
     
