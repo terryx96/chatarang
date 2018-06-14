@@ -8,7 +8,7 @@ const Message = (props) => {
             <span style = {styles.details}>
             <span><Avatar user = {props.user}/></span>
             <Metadata message = {props.message} />
-            <div style = {styles.user}>{props.message.userName} 1:31 PM</div>
+            <div style = {styles.user}>{props.message.displayName} 1:31 PM</div>
             <div>{props.message.body}</div>
             </span>
         </div>

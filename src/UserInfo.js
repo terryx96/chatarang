@@ -6,8 +6,8 @@ import SignOut from './SignOut'
 const UserInfo = ({user, signOut}) => {
     return (
             <div className="UserInfo" style = {styles.children}>
-                <Avatar user = {user} email = "terry.wade@valpo.edu"/>
-                <span className="user">{user.userName} </span>
+                <Avatar user = {user} email = {user.email}/>
+                <span className="user">{user.displayName} </span>
                 <SignOut signOut = {signOut} />
                  </div>
     )

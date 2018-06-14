@@ -55,7 +55,7 @@ class Chat extends Component {
         const messages = [...this.state.messages];
         messages.push({
             id: ++id,
-            userName: this.props.user.userName,
+            displayName: this.props.user.displayName,
             email: 'terry.wade@valpo.edu',
             body,
         });

@@ -10,7 +10,7 @@ class App extends Component {
   state = {
     user: {
       uid: ++id,
-      userName: "",
+      displayName: "",
       email: "",
     }
   }
@@ -26,7 +26,7 @@ class App extends Component {
     return (
       <div className="App">
         {
-          (this.state.user.userName) ? 
+          (this.state.user.displayName) ? 
         ( <Main user = {this.state.user} signOut = {this.signOut}/> ) :
         (<SignIn signIn = {this.signIn}/>)
         }
@@ -34,11 +34,12 @@ class App extends Component {
     );
   }
 
-  signIn = (email) =>{
+  signIn = (oauthuser) =>{
     const user = {
-      uid: "",
-      userName: email.substring(0, email.indexOf("@")),
-      email: email,
+      uid: oauthuser.uid,
+      displayName: oauthuser.displayName,
+      email: oauthuser.email,
+      photoUrl: oauthuser.photoURL,
     }
     this.setState({user});
     localStorage.setItem('user', JSON.stringify(user));
