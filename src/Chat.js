@@ -17,11 +17,21 @@ class Chat extends Component {
     }
 
     componentDidMount(){
-        base.syncState("random", {
+        base.syncState(this.props.roomName, {
             context: this,
             state: "messages",
             asArray: true,
         });
+    }
+
+    componentDidUpdate(prevProps){
+        if(prevProps!=this.props){
+        base.syncState(this.props.roomName, {
+            context: this,
+            state: "messages",
+            asArray: true,
+        });
+    }
     }
 
     render(){

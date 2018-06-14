@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 class Room extends Component {
     state = {
         name: this.props.name,
+        messages: [],
     }
     render(){
         return(
@@ -13,6 +14,9 @@ class Room extends Component {
     setName = () =>{
         this.props.getName(this.state.name);
     }
+    
+
+    
 }
 
 export default Room;

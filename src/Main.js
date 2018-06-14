@@ -17,7 +17,7 @@ class Main extends Component{
     }
 
     getName = (roomName) => {
-      this.setState({roomName});  
+      this.setState({roomName}); 
     }
 }
 
