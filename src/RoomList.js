@@ -6,7 +6,6 @@ import base from "./base";
 class RoomList extends Component {
     state = {
         rooms: {
-           
         },
     }
 

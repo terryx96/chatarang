@@ -18,16 +18,11 @@ class Chat extends Component {
     }
 
     componentDidMount(){
-        base.syncState(`${this.props.roomName.name}/messages`, {
-            context: this,
-            state: "messages",
-            asArray: true,
-        });
-        //this.setState({messages: []})
+        this.syncMessages();
     }
 
     componentDidUpdate(prevProps){
-        if(prevProps!==this.props){
+        if(prevProps.roomName.name!==this.props.roomName.name){
             this.syncMessages();
         }
     }
