@@ -17,7 +17,7 @@ class Chat extends Component {
     }
 
     componentDidMount(){
-        base.syncState(this.props.roomName, {
+        base.syncState(`${this.props.roomName.name}`, {
             context: this,
             state: "messages",
             asArray: true,
@@ -25,16 +25,16 @@ class Chat extends Component {
         //this.setState({messages: []})
     }
 
-    componentDidUpdate(prevProps){
-        if(prevProps!=this.props){
-        base.syncState(this.props.roomName, {
-            context: this,
-            state: "messages",
-            asArray: true,
-        });
+    // componentDidUpdate(prevProps){
+    //     if(prevProps!=this.props){
+    //     base.syncState(this.props.roomName.name, {
+    //         context: this,
+    //         state: "messages",
+    //         asArray: true,
+    //     });
         
-    }
-    }
+    // }
+    // }
 
     render(){
         return (

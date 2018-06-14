@@ -5,7 +5,10 @@ import Chat from './Chat';
 
 class Main extends Component{
     state = {
-        roomName: "general",
+        roomName: {
+            name: "general",
+            description: "this is the general chat",
+        },
     }
     render(){
         return(
@@ -15,9 +18,10 @@ class Main extends Component{
             </div>
         )
     }
+    //roomName = {this.state.roomName.name}
 
-    getName = (roomName) => {
-      this.setState({roomName}); 
+     getName = (roomName) => {
+    this.setState({roomName}); 
     }
 }
 
