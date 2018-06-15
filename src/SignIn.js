@@ -14,22 +14,11 @@ class SignIn extends Component {
 
     handleSubmit = (ev) => {
         ev.preventDefault();
-        this.props.signIn({
-            uid: this.state.uid,
-            displayName: this.state.email,
-            email: this.state.email,
-        });
     }
 
     authenticate = () => {
         auth
-            .signInWithPopup(googleProvider)
-            .then(
-                response => {
-                    this.props.signIn(response.user)
-                }
-            )
-            
+            .signInWithPopup(googleProvider);
     }
 
     render() {
@@ -59,7 +48,6 @@ class SignIn extends Component {
                     <button 
                     type = "submit" 
                     style = {styles.buttonElement}
-                    onClick = {this.props.onClick}
                     >
                     Log in</button>
 
