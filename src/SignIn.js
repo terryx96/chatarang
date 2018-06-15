@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {auth, googleProvider} from './base';
+import {auth, googleProvider, gitHubProvider} from './base';
 
 class SignIn extends Component {
     state = {
@@ -16,7 +16,12 @@ class SignIn extends Component {
         ev.preventDefault();
     }
 
-    authenticate = () => {
+    gitHubAuthenticate = () => {
+        auth
+            .signInWithPopup(gitHubProvider);
+    }
+
+    googleAuthenticate = () => {
         auth
             .signInWithPopup(googleProvider);
     }
@@ -57,9 +62,17 @@ class SignIn extends Component {
                     <button
                         style = {styles.buttonElement}
                         type = "button"
-                        onClick = {this.authenticate}
+                        onClick = {this.googleAuthenticate}
                     >
                     Sign in with Google
+                    </button>
+
+                    <button
+                        style = {styles.buttonElement}
+                        type = "button"
+                        onClick = {this.gitHubAuthenticate}
+                    >
+                    Sign in with GitHub 
                     </button>
 
                 </form>
