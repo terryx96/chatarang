@@ -5,12 +5,11 @@ import Metadata from './Metadata'
 const Message = (props) => {
     return (
         <div className = "Message" style = {styles.message}>
-            <span style = {styles.details}>
-            <span><Avatar user = {props.user}/></span>
+            <Avatar user = {props.user}/>
+            <div className = "details" style = {styles.details}>
             <Metadata message = {props.message} />
-            <div style = {styles.user}>{props.message.displayName} 1:31 PM</div>
-            <div>{props.message.body}</div>
-            </span>
+            <div className = "body">{props.message.body}</div>
+            </div>
         </div>
     )
 }

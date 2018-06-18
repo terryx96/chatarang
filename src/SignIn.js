@@ -30,7 +30,7 @@ class SignIn extends Component {
          return(
             <div className = "SignIn" style = {styles.backdrop}>
                 <div style = {styles.overlay}>
-                <div style = {styles.inside}>Sign into Chatarang</div>
+                <div style = {styles.inside}>Sign into Christian Chatarang</div>
                 <form onSubmit = {this.handleSubmit}>
                     <div>
                         <input 

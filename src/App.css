@@ -4,7 +4,7 @@ body {
   margin: 0;
   font-family: Raleway, sans-serif;
 }
-
+ 
 .RoomList h2 {
   font-size: 1rem;
 }
@@ -93,5 +93,9 @@ body {
 }
 .UserInfo a:hover {
   color: white;
+}
+
+.SideBar:hover{
+  left: 10;
 }
 

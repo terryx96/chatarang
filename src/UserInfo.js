@@ -11,7 +11,7 @@ const UserInfo = ({user, signOut}) => {
                 <SignOut signOut = {signOut} />
                  </div>
     )
-}
+} 
 
 const styles = {
     children: {
