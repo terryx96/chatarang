@@ -3,20 +3,12 @@ import {StyleSheet, css} from 'aphrodite';
 import Room from './Room';
 import base from "./base";
 import RoomForm from './RoomForm'
+import {Route, Switch, Link} from 'react-router-dom';
 
 class RoomList extends Component {
     state = {
         rooms: {
         },
-        showRoomForm: false,
-    }
-
-    showRoomForm = () => {
-        this.setState({showRoomForm: true});
-    }
-
-    hideRoomForm = () => {
-        this.setState({showRoomForm: false});
     }
 
     componentDidMount(){
@@ -33,35 +25,53 @@ class RoomList extends Component {
     }
 
     render(){
-        if(this.state.showRoomForm){
-            return <RoomForm addRoom = {this.addRoom} hideRoomForm = {this.hideRoomForm}/>
-        }
-        else{
-        return(
-            <nav className={`RoomList ${css(styles.nav)}`} >
-                <div className = {`${css(styles.heading)}`}>
-                    <h2>Rooms</h2>
-                    <button
-                    className = {`${css(styles.button)}`}
-                    onClick = {this.showRoomForm}
-                    >
-                    <i className="fas fa-plus"></i></button>
-                </div>
-                <ul>
-                    {
-                        Object.keys(this.state.rooms).map(
-                            r => (
-                                <Room key = {r} getName = {this.props.getName} room = {this.state.rooms[r]} />
-                            )
 
+        return(
+            <Switch>
+                <Route 
+                    path = '/rooms/new' 
+                    render = {
+                        (navProps) => (
+                            <RoomForm addRoom = {this.addRoom} 
+                            {...navProps}
+                            />
                         )
                     }
-                </ul>
-            </nav>
-        )
+                />
+                <Route 
+                    render = {
+                        () => (
+                            <nav className={`RoomList ${css(styles.nav)}`} >
+                                <div className = {`${css(styles.heading)}`}>
+                                    <h2>Rooms</h2>
+                                    <Link
+                                    className = {`${css(styles.button)}`}
+                                    to = "/rooms/new"
+                                    >
+                                    <i className="fas fa-plus"></i></Link>
+                                </div>
+                                <ul>
+                                    {
+                                        Object.keys(this.state.rooms).map(
+                                            r => (
+                                                <Room key = {r} getName = {this.props.getName} room = {this.state.rooms[r]} />
+                                            )
+                
+                                        )
+                                    }
+                                </ul>
+                            </nav>
+                        )
+                    }
+                    />
+            </Switch>
+        );
+
+        
+        
     }
     }
-}
+
 
 const styles = StyleSheet.create({
     nav: {
