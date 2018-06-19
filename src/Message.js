@@ -11,7 +11,7 @@ const Message = (props) => {
             <div className = "body">{props.message.body}</div>
             </div>
         </div>
-    )
+    ) 
 }
 
 const styles = {

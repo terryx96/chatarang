@@ -5,7 +5,8 @@ class RoomForm extends Component {
   state = {
     room: {
         name: '',
-        description: ''
+        description: '',
+        public: true,
     },
   }
 
@@ -19,6 +20,9 @@ class RoomForm extends Component {
   handleChange = (ev) => {
     const room = {...this.state.room}
     room[ev.target.name] = ev.target.value
+    const target = ev.target
+    const value = target.type === 'checkbox' ? target.checked : target.value
+    room[target.name] = value
     this.setState({ room })
   }
 
@@ -31,6 +35,15 @@ class RoomForm extends Component {
             className={css(styles.form)}
             onSubmit={this.handleSubmit}
           >
+          <p>
+            <label className = {css(styles.label)}>
+              <input type = "checkbox" 
+              checked = {this.state.room.public}
+              name = "public"
+              onChange = {this.handleChange}/>
+              Public
+            </label>
+          </p>
             <p>
               <label htmlFor="name" className={css(styles.label)}>
                 Room Name
