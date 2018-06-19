@@ -2,11 +2,13 @@ import React from 'react';
 
 //this is a stateless functional componenet
 const ChatHeader = (props) => {
+        console.log(props.rooms)
+        console.log(props.roomName)
         return (
             <div className = "ChatHeader" style = {styles.chatHeader}>
                 <div className="roomInfo">
                     <h2 style = {styles.h2}>#{props.roomName.name}</h2>
-                    <p style = {styles.p}>{props.roomName.description}</p>
+                    <p style = {styles.p}>{props.rooms.roomName}</p>
                 </div>
             </div>
         )

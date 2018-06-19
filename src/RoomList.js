@@ -16,15 +16,18 @@ class RoomList extends Component {
             context: this,
             state: "rooms",
         })
+
+        this.props.getRooms(this.state.rooms);
     }
 
     addRoom = (room) => {
         const rooms = {...this.state.rooms};
         rooms[room.name] = room;
         this.setState({rooms})
+        this.props.getRooms(this.state.rooms);
     }
 
-    render(){
+    render(){   
         return(
             <Switch>
                 <Route 
@@ -69,6 +72,7 @@ class RoomList extends Component {
         
         
     }
+
     }
 
 
