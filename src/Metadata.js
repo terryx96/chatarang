@@ -1,10 +1,11 @@
-import React from 'react'
+import React from 'react';
+import moment from 'moment';
 
 const Metadata = (props) => {
     return (
         <div className="Metadata" style = {styles.data}>
               <div style = {styles.user}>{props.message.displayName}</div>
-              <div style = {styles.time}>1:10 PM</div>
+              <div style = {styles.time}>{moment(props.message.createdAt).fromNow()}</div>
             </div>
     )
 }

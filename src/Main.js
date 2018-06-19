@@ -38,7 +38,7 @@ class Main extends Component{
     //roomName = {this.state.roomName.name}
 
      getName = (roomName) => {
-         if(roomName.name === 'new') return null;
+         if(roomName === 'new') return null;
         const room = this.state.rooms[roomName];
 
         if(room){

@@ -54,10 +54,11 @@ class Chat extends Component {
     addMessage = (body) => {
         const messages = [...this.state.messages];
         messages.push({
-            id: ++id,
+            id: `${Date.now()}`,
             displayName: this.props.user.displayName,
             email: this.props.user.email,
             body,
+            createdAt: Date.now(),
         });
         this.setState({messages});
     }
