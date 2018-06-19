@@ -5,11 +5,23 @@ import Chat from './Chat';
 
 class Main extends Component{
     state = {
-        roomName: {
-            name: "general",
-            description: "this is the general chat",
-        },
+        roomName: { },
     }
+
+    componentDidMount() {
+        this.getName({
+            name: this.props.match.params.roomName,
+        })
+    }
+
+    componentDidUpdate(prevProps){
+        if(prevProps.match.params.roomName !== this.props.match.params.roomName){
+        this.getName({
+            name: this.props.match.params.roomName,
+        })
+    }
+    }
+
     render(){
         return(
             <div className = "Main" style = {styles}>

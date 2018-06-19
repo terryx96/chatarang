@@ -32,7 +32,7 @@ class Chat extends Component {
         if(this.state.binding){
             base.removeBinding(this.state.binding);
         }
-        const binding = base.syncState(`${this.props.roomName.name}/messages`, {
+        const binding = base.syncState(`${this.props.roomName.name}/messages/`, {
             context: this,
             state: "messages",
             asArray: true,

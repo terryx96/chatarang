@@ -25,7 +25,6 @@ class RoomList extends Component {
     }
 
     render(){
-
         return(
             <Switch>
                 <Route 
@@ -54,7 +53,7 @@ class RoomList extends Component {
                                     {
                                         Object.keys(this.state.rooms).map(
                                             r => (
-                                                <Room key = {r} getName = {this.props.getName} room = {this.state.rooms[r]} />
+                                                <Room key = {r} room = {this.state.rooms[r]} />
                                             )
                 
                                         )

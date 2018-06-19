@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import {Route, Switch, Redirect} from 'react-router-dom';
 import './App.css';
 import Main from './Main';
 import SignIn from './SignIn';
@@ -44,14 +44,49 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {
+        <Switch>
+          <Route 
+            path = '/sign-in'
+            render = {navProps => (
+              this.signedIn()
+              ? <Redirect to = '/rooms/general' />
+              : <SignIn />
+            )} />
+          
+          <Route
+            path = '/rooms/:roomName'
+            render = {navProps => (
+              this.signedIn()
+              ? <Main user = {this.state.user}
+                      signOut = {this.signOut}
+                      {...navProps}
+                />
+              : <Redirect to = '/sign-in' />  
+            )} />
+
+          <Route
+            render = {navProps => (
+              this.signedIn()
+              ? <Redirect to='/rooms/general' />
+              : <Redirect to = '/sign-in' />
+            )} />
+          
+        </Switch>
+
+        {/* {
           (this.state.user.displayName) ? 
         ( <Main user = {this.state.user} signOut = {this.signOut}/> ) :
         (<SignIn />)
-        }
+        } */}
       </div>
     );
   }
+
+  signedIn = () =>{
+    return this.state.user.displayName;
+  }
+
+
 
   signIn = (oauthuser) =>{
     const user = {

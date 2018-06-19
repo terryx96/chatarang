@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {NavLink} from 'react-router-dom';
 
 class Room extends Component {
     state = {
@@ -7,14 +8,10 @@ class Room extends Component {
     }
     render(){
         return(
-           <li><a onClick={this.handleClick}>{this.props.room.name}</a></li>
+           <li><NavLink to = {`/rooms/${this.props.room.name}`}>{this.props.room.name}</NavLink></li>
      )
     }
 
-    handleClick = (ev) =>{
-        ev.preventDefault();
-        this.props.getName(this.props.room);
-    }
 
     
 
