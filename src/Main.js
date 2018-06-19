@@ -31,7 +31,7 @@ class Main extends Component{
         return(
             <div className = "Main" style = {styles}>
                 <Sidebar getRooms = {this.getRooms} roomName = {this.state.roomName} user = {this.props.user} signOut = {this.props.signOut} getName = {this.getName}/>
-                <Chat rooms = {this.state.rooms} user = {this.props.user} roomName = {this.state.roomName}/>
+                <Chat removeRoom = {this.removeRoom} rooms = {this.state.rooms} user = {this.props.user} roomName = {this.state.roomName}/>
             </div>
         )
     }
@@ -49,6 +49,12 @@ class Main extends Component{
         }
 
        
+    }
+
+    removeRoom = (room) => {
+        const rooms = {...this.state.rooms};
+        rooms[room.name] = null;
+        this.setState({rooms}, this.loadValidRoom);
     }
 
     getRooms = (rooms) => {

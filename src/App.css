@@ -99,3 +99,11 @@ body {
   left: 10;
 }
 
+.ChatHeader button{
+  opacity: 0;
+}
+
+
+.ChatHeader:hover button {
+  opacity: 1;
+}
