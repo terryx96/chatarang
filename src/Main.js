@@ -19,6 +19,12 @@ class Main extends Component{
         
     }
 
+    addRoom = (room) => {
+        const rooms = {...this.state.rooms};
+        rooms[room.name] = room;
+        this.setState({rooms})
+    }
+
     componentDidUpdate(prevProps){
         if(prevProps.match.params.roomName !== this.props.match.params.roomName){
         this.getName(
@@ -30,7 +36,7 @@ class Main extends Component{
     render(){
         return(
             <div className = "Main" style = {styles}>
-                <Sidebar users = {this.props.users} getRooms = {this.getRooms} roomName = {this.state.roomName} user = {this.props.user} signOut = {this.props.signOut} getName = {this.getName}/>
+                <Sidebar rooms = {this.state.rooms} addRoom = {this.addRoom} users = {this.props.users} getRooms = {this.getRooms} roomName = {this.state.roomName} user = {this.props.user} signOut = {this.props.signOut} getName = {this.getName}/>
                 <Chat removeRoom = {this.removeRoom} rooms = {this.state.rooms} user = {this.props.user} roomName = {this.state.roomName}/>
             </div>
         )

@@ -1,39 +1,19 @@
 import React, {Component} from 'react';
 import {StyleSheet, css} from 'aphrodite';
 import Room from './Room';
-import base from "./base";
 import RoomForm from './RoomForm'
 import {Route, Switch, Link} from 'react-router-dom';
 
 class RoomList extends Component {
-    state = {
-        rooms: {
-        },
-    }
 
-    componentDidMount(){
-        base.syncState("rooms", {
-            context: this,
-            state: "rooms",
-        })
-
-    }
-
-    addRoom = (room) => {
-        const rooms = {...this.state.rooms};
-        rooms[room.name] = room;
-        this.setState({rooms})
-        
-    }
-
-    render(){   
+     render(){   
         return(
             <Switch>
                 <Route 
                     path = '/rooms/new' 
                     render = {
                         (navProps) => (
-                            <RoomForm users = {this.props.users} addRoom = {this.addRoom} 
+                            <RoomForm users = {this.props.users} addRoom = {this.props.addRoom} 
                             {...navProps}
                             />
                         )
@@ -53,9 +33,9 @@ class RoomList extends Component {
                                 </div>
                                 <ul>
                                     {
-                                        Object.keys(this.state.rooms).map(
+                                        Object.keys(this.props.rooms).map(
                                             r => (
-                                                <Room key = {r} room = {this.state.rooms[r]} />
+                                                <Room key = {r} room = {this.props.rooms[r]} />
                                             )
                 
                                         )
