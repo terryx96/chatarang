@@ -17,14 +17,13 @@ class RoomList extends Component {
             state: "rooms",
         })
 
-        this.props.getRooms(this.state.rooms);
     }
 
     addRoom = (room) => {
         const rooms = {...this.state.rooms};
         rooms[room.name] = room;
         this.setState({rooms})
-        this.props.getRooms(this.state.rooms);
+        
     }
 
     render(){   
@@ -34,7 +33,7 @@ class RoomList extends Component {
                     path = '/rooms/new' 
                     render = {
                         (navProps) => (
-                            <RoomForm addRoom = {this.addRoom} 
+                            <RoomForm users = {this.props.users} addRoom = {this.addRoom} 
                             {...navProps}
                             />
                         )

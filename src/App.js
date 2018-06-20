@@ -64,6 +64,7 @@ class App extends Component {
               ? <Main user = {this.state.user}
                       signOut = {this.signOut}
                       {...navProps}
+                      users = {this.state.users}
                 />
               : <Redirect to = '/sign-in' />  
             )} />
