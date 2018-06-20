@@ -2,6 +2,7 @@ import React from 'react';
 
 import RoomList from './RoomList';
 import UserInfo from './UserInfo'
+import DirectMessageList from './DirectMessageList'
 
 const Sidebar = (props) => {
         return (
@@ -13,6 +14,8 @@ const Sidebar = (props) => {
                 }}>
                 XTBC 18</h1>
                 <RoomList user = {props.user} rooms = {props.rooms} addRoom = {props.addRoom} users = {props.users} roomName = {props.roomName}/>
+                <DirectMessageList user = {props.user} rooms = {props.rooms} addRoom = {props.addRoom} users = {props.users} roomName = {props.roomName}/>
+
             </aside>
         )
 }

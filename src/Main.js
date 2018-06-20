@@ -47,6 +47,14 @@ class Main extends Component{
             })
         }
 
+        if(room.dm){
+            const memberNames = room.members.map(member => member.label.split(' ')[0])
+            room.displayName = memberNames.join(', ')
+            console.log(room.displayName)
+            room.name = room.members.map(member => member.value).join('!')
+
+        }
+
         const rooms = {...this.state.rooms};
         rooms[room.name] = room;
         this.setState({rooms})
@@ -71,7 +79,7 @@ class Main extends Component{
     //roomName = {this.state.roomName.name}
 
      getName = (roomName) => {
-         if(roomName === 'new') return null;
+         if(roomName === 'new' || roomName === 'new-direct-message') return null;
         const room = this.filteredRooms().find(room => room.name === roomName);
 
         if(room){

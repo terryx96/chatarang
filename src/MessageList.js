@@ -17,8 +17,8 @@ class MessageList extends Component {
         return (
             <div className = "MessageList" style = {styles.messageList}>
                 <div style = {styles.roomAnnouncement}>
-                    <h3 style = {styles.h3}>#{this.props.roomName.name}</h3>
-                    <p>This is the very beginning of the #{this.props.roomName.name} room.</p>
+                    <h3 style = {styles.h3}>#{this.props.roomName.displayName}</h3>
+                    <p>This is the very beginning of the #{this.props.roomName.displayName} room.</p>
                 </div>
                 {this.props.messages.map(msg => 
                 <Message key = {msg.id} message = {msg} user = {this.props.user}/>

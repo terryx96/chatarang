@@ -5,18 +5,17 @@ import RoomForm from './RoomForm'
 import {Route, Switch, Link} from 'react-router-dom';
 import DirectMessageForm from './DirectMessageForm';
 
-class RoomList extends Component {
+class DirectMessageList extends Component {
 
      render(){   
-        const rooms = this.props.rooms.filter(room => !room.dm);
-
+        const rooms = this.props.rooms.filter(room => room.dm);
         return(
             <Switch>
                 <Route 
                     path = '/rooms/new' 
                     render = {
                         (navProps) => (
-                            <RoomForm user = {this.props.user} users = {this.props.users} addRoom = {this.props.addRoom} 
+                            <DirectMessageForm user = {this.props.user} users = {this.props.users} addRoom = {this.props.addRoom} 
                             {...navProps}
                             />
                         )
@@ -27,10 +26,10 @@ class RoomList extends Component {
                         () => (
                             <nav className={`RoomList ${css(styles.nav)}`} >
                                 <div className = {`${css(styles.heading)}`}>
-                                    <h2>Rooms</h2>
+                                    <h2>Direct Messages</h2>
                                     <Link
                                     className = {`${css(styles.button)}`}
-                                    to = "/rooms/new"
+                                    to = "/rooms/new-direct-message"
                                     >
                                     <i className="fas fa-plus"></i></Link>
                                 </div>
@@ -94,4 +93,4 @@ const styles = StyleSheet.create({
       }
     },
   })
-export default RoomList;
+export default DirectMessageList;
