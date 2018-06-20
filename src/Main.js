@@ -95,7 +95,7 @@ class Main extends Component{
     }
 
     loadValidRoom = () => {
-        const room = Object.keys(this.state.rooms).find(
+        const room = this.filteredRoomNames().find(
             roomName => this.state.rooms[roomName]
         );
         this.props.history.push(`/rooms/${room}`);
