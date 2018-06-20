@@ -37,7 +37,7 @@ class RoomList extends Component {
                                     {
                                         Object.keys(rooms).map(
                                             r => (
-                                                <Room key = {r} room = {this.props.rooms[r]} />
+                                                <Room key = {r} room = {rooms[r]} />
                                             )
                 
                                         )

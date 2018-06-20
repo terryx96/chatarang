@@ -32,33 +32,6 @@ class SignIn extends Component {
                 <div style = {styles.overlay}>
                 <div style = {styles.inside}>Sign into Christian Chatarang</div>
                 <form onSubmit = {this.handleSubmit}>
-                    <div>
-                        <input 
-                        style = {styles.input}
-                        type = "email"
-                        placeholder = "email"
-                        value = {this.state.name}
-                        onChange = {this.handleChange}
-                        autoFocus
-                        />
-                    </div>
-                    <div style = {styles.inside}></div>
-                    <div>
-                        <input
-                        style = {styles.input}
-                        type = "password"
-                        placeholder = "password"
-                        />
-                    </div>
-                    <button 
-                    type = "submit" 
-                    style = {styles.buttonElement}
-                    >
-                    Log in</button>
-
-                    <br/>
-                    or
-                    <br/>
                     <button
                         style = {styles.buttonElement}
                         type = "button"
