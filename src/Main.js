@@ -39,6 +39,14 @@ class Main extends Component{
     }
 
     addRoom = (room) => {
+        const user = this.props.user
+        if(!room.public){
+            room.members.push({
+                label: `${user.displayName} (${user.email})`,
+                value: user.uid
+            })
+        }
+
         const rooms = {...this.state.rooms};
         rooms[room.name] = room;
         this.setState({rooms})

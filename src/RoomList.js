@@ -13,7 +13,7 @@ class RoomList extends Component {
                     path = '/rooms/new' 
                     render = {
                         (navProps) => (
-                            <RoomForm users = {this.props.users} addRoom = {this.props.addRoom} 
+                            <RoomForm user = {this.props.user} users = {this.props.users} addRoom = {this.props.addRoom} 
                             {...navProps}
                             />
                         )

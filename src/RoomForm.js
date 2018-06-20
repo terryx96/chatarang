@@ -1,5 +1,8 @@
+
 import React, { Component } from 'react'
 import { StyleSheet, css } from 'aphrodite'
+import Select from 'react-select'
+import 'react-select/dist/react-select.css'
 
 class RoomForm extends Component {
   state = {
@@ -8,23 +11,46 @@ class RoomForm extends Component {
         description: '',
         public: true,
         members: [],
+        dm: false,
     },
   }
 
   handleSubmit = (ev) => {
     ev.preventDefault()
     this.props.addRoom(this.state.room)
-    this.props.history.goBack();
-
+    this.props.history.push(`/rooms/${this.state.room.name}`)
   }
 
   handleChange = (ev) => {
     const room = {...this.state.room}
-    room[ev.target.name] = ev.target.value
     const target = ev.target
     const value = target.type === 'checkbox' ? target.checked : target.value
+
     room[target.name] = value
     this.setState({ room })
+  }
+
+  handleSelectChange = (selectedValue) => {
+    const room = {...this.state.room}
+    room.members = selectedValue
+    this.setState({ room })
+
+    console.log(selectedValue)
+  }
+
+  users = () => {
+    const { users } = this.props
+    delete users[this.props.user.uid]
+
+    return Object.keys(users).map(
+      uid => {
+        const user = this.props.users[uid]
+        return {
+          value: uid,
+          label: `${user.displayName} (${user.email})`,
+        }
+      }
+    )
   }
 
   render() {
@@ -36,15 +62,17 @@ class RoomForm extends Component {
             className={css(styles.form)}
             onSubmit={this.handleSubmit}
           >
-          <p>
-            <label className = {css(styles.label)}>
-              <input type = "checkbox" 
-              checked = {this.state.room.public}
-              name = "public"
-              onChange = {this.handleChange}/>
-              Public
-            </label>
-          </p>
+            <p>
+              <label className={css(styles.label)}>
+                <input
+                  type="checkbox"
+                  name="public"
+                  checked={this.state.room.public}
+                  onChange={this.handleChange}
+                />
+                Public
+              </label>
+            </p>
             <p>
               <label htmlFor="name" className={css(styles.label)}>
                 Room Name
@@ -53,7 +81,7 @@ class RoomForm extends Component {
                 type="text"
                 name="name"
                 value={this.state.room.name}
-                className={css(styles.input)}
+                className={css(styles.input, styles.textInput)}
                 onChange={this.handleChange}
                 autoFocus
               />
@@ -66,21 +94,32 @@ class RoomForm extends Component {
                 type="text"
                 name="description"
                 value={this.state.room.description}
-                className={css(styles.input)}
+                className={css(styles.input, styles.textInput)}
                 onChange={this.handleChange}
               />
             </p>
-              {
-                !this.state.room.public && (
+
+            {
+              !this.state.room.public && (
                 <div>
-                
-                  <label htmlFor='members' className={css(styles.label)} >
-                  Members
+                  <label
+                    htmlFor="users"
+                    className={css(styles.label)}
+                  >
+                    Users to add
                   </label>
-                  <input type = 'text' name = 'users' className={css(styles.input)}/> 
+                  <Select
+                    name="members"
+                    multi
+                    value={this.state.room.members}
+                    options={this.users()}
+                    onChange={this.handleSelectChange}
+                    className={css(styles.input)}
+                    placeholder="Invite other people..."
+                  />
                 </div>
-                )
-              }
+              )
+            }
             <div className={css(styles.buttonContainer)}>
               <button
                 type="button"
@@ -106,6 +145,7 @@ class RoomForm extends Component {
 const styles = StyleSheet.create({
   roomForm: {
     position: 'absolute',
+    zIndex: 1000,
     top: 0,
     left: 0,
     height: '100vh',
@@ -136,6 +176,8 @@ const styles = StyleSheet.create({
     boxShadow: '0 1px 1px rgba(0,0,0,.1)',
     marginBottom: '2rem',
     paddingBottom: '2rem',
+    paddingLeft: '2rem',
+    paddingRight: '2rem',
   },
 
   label: {
@@ -145,18 +187,20 @@ const styles = StyleSheet.create({
   },
 
   input: {
-    width: '20rem',
     fontSize: '1.5rem',
     border: 0,
     borderBottom: '1px solid black',
-    marginTop: '1rem',
-    marginBottom: '1rem',
+    margin: '1rem auto',
     textAlign: 'center',
     padding: '0.5rem',
 
     ':focus': {
       outline: 0,
     },
+  },
+
+  textInput: {
+    width: '20rem',
   },
 
   h2: {
@@ -186,5 +230,4 @@ const styles = StyleSheet.create({
     color: '#666',
   },
 })
-
-export default RoomForm
+export default RoomForm;
