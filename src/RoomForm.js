@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { StyleSheet, css } from 'aphrodite'
 import Select from 'react-select'
 import 'react-select/dist/react-select.css'
+import './App.css'
 
 class RoomForm extends Component {
   state = {

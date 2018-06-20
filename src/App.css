@@ -101,9 +101,25 @@ body {
 
 .ChatHeader button{
   opacity: 0;
-  transition: opacity .4s ease-out;
+  transition: opacity .2s ease-out;
 }
 
 .ChatHeader:hover button {
   opacity: 1;
+}
+
+.Select-control{
+  border: 0 !important;
+  outline: 0 !important;
+}
+
+.Select--multi .Select-value-label{
+  max-width: 8rem;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.Select-arrow-zone{
+  opacity: 0;
 }
