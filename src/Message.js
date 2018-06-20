@@ -1,22 +1,40 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Avatar from './Avatar';
 import Metadata from './Metadata'
 import {StyleSheet, css} from 'aphrodite';
+import {Picker} from 'emoji-mart';
+import 'emoji-mart/css/emoji-mart.css';
 
-const Message = (props) => {
-    return (
-        <div className = {`Message ${css(styles.message)}`}>
-            <Avatar user = {props.user}/>
-            <div className ={css(styles.details)}>
-            <Metadata message = {props.message} />
-            <div className = "body">{props.message.body}</div>
-            <button
-                className = {css(styles.reactionButton)}>
-            <i className="far fa-smile"></i>
-            </button>
+
+class Message extends Component {
+    state = {
+        showPicker: false,
+    }
+
+    togglePicker = () => {
+        this.setState({showPicker: !this.state.showPicker});
+    }
+
+    render(){
+        return (
+            <div className = {`Message ${css(styles.message)}`}>
+                <Avatar user = {this.props.user}/>
+                <div className ={css(styles.details)}>
+                <Metadata message = {this.props.message} />
+                <div className = "body">{this.props.message.body}</div>
+                <button
+                    className = {css(styles.reactionButton)}
+                    onClick = {this.togglePicker}>
+                <i className="far fa-smile"></i>
+                </button>
+                </div>
+                {
+                    this.state.showPicker && <Picker
+                                                showPreview = {false} />
+                }
             </div>
-        </div>
-    ) 
+        )
+    }
 }
 
 const styles = StyleSheet.create({
