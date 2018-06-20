@@ -8,7 +8,10 @@ class Room extends Component {
     }
     render(){
         return(
-           <li><NavLink to = {`/rooms/${this.props.room.name}`}>{this.props.room.displayName}</NavLink></li>
+           <li><NavLink to = {`/rooms/${this.props.room.name}`}>{
+               this.props.room.dm ? this.props.room.displayName 
+               : this.props.room.name
+            }</NavLink></li>
      )
     }
 

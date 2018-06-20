@@ -3,7 +3,6 @@ import {StyleSheet, css} from 'aphrodite';
 import Room from './Room';
 import RoomForm from './RoomForm'
 import {Route, Switch, Link} from 'react-router-dom';
-import DirectMessageForm from './DirectMessageForm';
 
 class RoomList extends Component {
 

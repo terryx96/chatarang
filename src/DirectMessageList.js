@@ -12,7 +12,7 @@ class DirectMessageList extends Component {
         return(
             <Switch>
                 <Route 
-                    path = '/rooms/new' 
+                    path = '/rooms/new-direct-message' 
                     render = {
                         (navProps) => (
                             <DirectMessageForm user = {this.props.user} users = {this.props.users} addRoom = {this.props.addRoom} 
