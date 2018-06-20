@@ -3,7 +3,7 @@ import {Route, Switch, Redirect} from 'react-router-dom';
 import './App.css';
 import Main from './Main';
 import SignIn from './SignIn';
-import {auth} from './base';
+import base, {auth} from './base';
 
 class App extends Component {
   constructor() {
@@ -11,12 +11,21 @@ class App extends Component {
     const user = JSON.parse(localStorage.getItem('user')) || {}
     this.state = {
       user,
+      users: {},
     }
     }
   
   
 
   componentDidMount(){
+    base.syncState(
+      'users',
+      {
+        context: this,
+        state: 'users',
+      }
+    )
+
     auth.onAuthStateChanged(
       user => {
         if(user){
@@ -84,13 +93,19 @@ class App extends Component {
 
 
   signIn = (oauthuser) =>{
+    //build user object
     const user = {
       uid: oauthuser.uid,
       displayName: oauthuser.displayName,
       email: oauthuser.email,
       photoUrl: oauthuser.photoURL,
     }
-    this.setState({user});
+    //update list of users
+    const users = {...this.state.users}
+    users[user.uid] = user
+
+    //update state and localstorage
+    this.setState({user, users});
     localStorage.setItem('user', JSON.stringify(user));
   }
 
