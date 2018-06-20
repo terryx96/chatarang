@@ -11,6 +11,11 @@ class Message extends Component {
         showPicker: false,
     }
 
+    handleEmojiSelect = (emoji) => {
+        console.log(emoji);
+        this.togglePicker();
+    }
+
     togglePicker = () => {
         this.setState({showPicker: !this.state.showPicker});
     }
@@ -23,14 +28,16 @@ class Message extends Component {
                 <Metadata message = {this.props.message} />
                 <div className = "body">{this.props.message.body}</div>
                 <button
-                    className = {css(styles.reactionButton)}
+                    className={`reactionButton ${css(styles.reactionButton)}`}
                     onClick = {this.togglePicker}>
                 <i className="far fa-smile"></i>
                 </button>
                 </div>
                 {
                     this.state.showPicker && <Picker
-                                                showPreview = {false} />
+                                                showPreview = {false} 
+                                                style={pickerStyles}
+                                                onSelect = {this.handleEmojiSelect}/>
                 }
             </div>
         )
@@ -42,7 +49,12 @@ const styles = StyleSheet.create({
     message: {
         display: "flex",
         marginTop: "1rem",
-        padding: "0 1rem",
+        padding: '1rem',
+        transition: 'backgroundColor .2s',
+
+        ':hover':{
+            backgroundColor: '#f6f6f6',
+        }
     },
     reactionButton: {
         border: 0,
@@ -55,6 +67,7 @@ const styles = StyleSheet.create({
         postion: 'absolute',
         top: '0.5rem',
         right: '0.5rem',
+        transition: 'color .25s',
 
         ':hover':{
             color: '#0000FF',
@@ -80,5 +93,11 @@ const styles = StyleSheet.create({
 
 
 })
+
+const pickerStyles = {
+    position: 'absolute',
+    top: '4rem',
+    right: '2rem',
+}
 
 export default Message;
