@@ -15,8 +15,27 @@ class Main extends Component{
             state: "rooms",
             then: () => this.getName(this.props.match.params.roomName)
         })
+    }
 
-        
+    filteredRoomNames = () => {
+        return Object.keys(this.state.rooms)
+                .filter(roomName => {
+                    const room = this.state.rooms[roomName]
+                    if(!room) return false
+
+                    return room.public || this.includesCurrentUser(room);
+
+            })
+    }
+
+    filteredRooms = () => {
+        return this.filteredRoomNames()
+                        .map(roomName => this.state.rooms[roomName]);
+    }
+
+    includesCurrentUser = (room) => {
+        const members = room.members || []
+        return members.find(userOption => userOption.value === this.props.user.uid)
     }
 
     addRoom = (room) => {
@@ -36,7 +55,7 @@ class Main extends Component{
     render(){
         return(
             <div className = "Main" style = {styles}>
-                <Sidebar rooms = {this.state.rooms} addRoom = {this.addRoom} users = {this.props.users} getRooms = {this.getRooms} roomName = {this.state.roomName} user = {this.props.user} signOut = {this.props.signOut} getName = {this.getName}/>
+                <Sidebar rooms = {this.filteredRooms()} addRoom = {this.addRoom} users = {this.props.users} getRooms = {this.getRooms} roomName = {this.state.roomName} user = {this.props.user} signOut = {this.props.signOut} getName = {this.getName}/>
                 <Chat removeRoom = {this.removeRoom} rooms = {this.state.rooms} user = {this.props.user} roomName = {this.state.roomName}/>
             </div>
         )
