@@ -5,7 +5,10 @@ const ChatHeader = (props) => {
         return (
             <div className = "ChatHeader" style = {styles.chatHeader}>
                 <div className="roomInfo">
-                    <h2 style = {styles.h2}>#{props.roomName.displayName}</h2>
+                    <h2 style = {styles.h2}>#{  props.roomName.dm
+                                                ? props.roomName.displayName
+                                                : props.roomName.name
+                                                }</h2>
                     <p style = {styles.p}>{props.roomName.description}</p>
                 </div>
                 <button style = {styles.button} onClick = {() => props.removeRoom(props.roomName)}>

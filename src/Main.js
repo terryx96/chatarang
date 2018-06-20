@@ -39,6 +39,7 @@ class Main extends Component{
     }
 
     addRoom = (room) => {
+        room.displayname = room.name;
         const user = this.props.user
         if(!room.public){
             room.members.push({
