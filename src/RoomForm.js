@@ -7,6 +7,7 @@ class RoomForm extends Component {
         name: '',
         description: '',
         public: true,
+        members: [],
     },
   }
 
@@ -69,6 +70,17 @@ class RoomForm extends Component {
                 onChange={this.handleChange}
               />
             </p>
+              {
+                !this.state.room.public && (
+                <div>
+                
+                  <label htmlFor='members' className={css(styles.label)} >
+                  Members
+                  </label>
+                  <input type = 'text' name = 'users' className={css(styles.input)}/> 
+                </div>
+                )
+              }
             <div className={css(styles.buttonContainer)}>
               <button
                 type="button"

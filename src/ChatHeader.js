@@ -2,8 +2,6 @@ import React from 'react';
 
 //this is a stateless functional componenet
 const ChatHeader = (props) => {
-        console.log(props.rooms)
-        console.log(props.roomName)
         return (
             <div className = "ChatHeader" style = {styles.chatHeader}>
                 <div className="roomInfo">
@@ -11,7 +9,7 @@ const ChatHeader = (props) => {
                     <p style = {styles.p}>{props.roomName.description}</p>
                 </div>
                 <button style = {styles.button} onClick = {() => props.removeRoom(props.roomName)}>
-                <i class="fas fa-trash-alt"></i>
+                <i className="fas fa-trash-alt"></i>
                 </button>
             </div>
         )

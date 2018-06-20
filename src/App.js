@@ -5,8 +5,6 @@ import Main from './Main';
 import SignIn from './SignIn';
 import {auth} from './base';
 
-let id = 0;
-
 class App extends Component {
   constructor() {
     super();
@@ -14,7 +12,6 @@ class App extends Component {
     this.state = {
       user,
     }
-   
     }
   
   

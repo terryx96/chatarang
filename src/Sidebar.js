@@ -25,7 +25,6 @@ const styles = {
         padding:" 1rem 0",
         display: "flex",
         flexDirection: "column",
-        left: "-100",
     },
     children: {
         padding: '0 1rem',

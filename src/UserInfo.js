@@ -1,5 +1,4 @@
 import React from 'react';
-import RoomList from './RoomList';
 
 import Avatar from './Avatar';
 import SignOut from './SignOut'

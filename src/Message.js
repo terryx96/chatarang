@@ -1,5 +1,4 @@
 import React from 'react';
-import Time from './Time';
 import Avatar from './Avatar';
 import Metadata from './Metadata'
 const Message = (props) => {

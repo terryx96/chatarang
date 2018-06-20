@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Avatar = ({user, style}) => {
-    const photoUrl = user.photoUrl || 'https://api.adorable.io/avatars/40/${user.email}'
+    const photoUrl = user.photoUrl || `https://api.adorable.io/avatars/40/${user.email}`
     return (
         <div
             className="Avatar"
