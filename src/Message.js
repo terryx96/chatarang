@@ -9,12 +9,27 @@ import 'emoji-mart/css/emoji-mart.css';
 class Message extends Component {
     state = {
         showPicker: false,
-        reactions: [],
+        reactions: {},
     }
 
     handleEmojiSelect = (emoji) => {
-        console.log(emoji);
+        this.pushToReactions(emoji.colons)
         this.togglePicker();
+    }
+
+    pushToReactions = (emojiColon) =>{
+        const name = `${emojiColon}`;
+        let reactions = {...this.state.reactions};
+        if(reactions[name]){
+            reactions[name].num +=1;
+            this.setState({reactions});
+            console.log('plus one')
+        }
+        else{
+            reactions[name] = {num: 1}
+            this.setState({reactions});
+            console.log('reaction added');
+        }
     }
 
     togglePicker = () => {
