@@ -24,6 +24,7 @@ class MessageForm extends Component {
             className = "MessageForm"
             onSubmit = {this.handleSubmit}>
                 <input 
+                    required
                     type = "text" 
                     name = "body" 
                     placeholder = "message..."
