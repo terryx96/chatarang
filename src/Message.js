@@ -4,6 +4,7 @@ import Metadata from './Metadata'
 import {StyleSheet, css} from 'aphrodite';
 import {Picker} from 'emoji-mart';
 import 'emoji-mart/css/emoji-mart.css';
+import Reaction from './Reaction';
 
 
 class Message extends Component {
@@ -22,6 +23,7 @@ class Message extends Component {
     }
 
     render(){
+        const reactions = this.props.message.reactions || [];
         return (
             <div className = {`Message ${css(styles.message)}`}>
                 <Avatar user = {this.props.user}/>
@@ -29,6 +31,15 @@ class Message extends Component {
                     <Metadata message = {this.props.message} />
                     <div className = "body">{this.props.message.body}</div>
 
+                    <div className = {css(styles.reactionList)}>
+                        {
+                            Object.keys(reactions).map(
+                                emoji => (
+                                    <Reaction key = {emoji} message = {this.props.message} emoji = {emoji} addReaction = {this.props.addReaction} />
+                                )
+                            )
+                        }
+                    </div>
 
                     <button
                         className={`reactionButton ${css(styles.reactionButton)}`}
@@ -78,6 +89,11 @@ const styles = StyleSheet.create({
         ':hover':{
             color: '#0000FF',
         }
+    },
+
+    reactionList: {
+        display: 'flex',
+        marginTop: '.5rem',
     },
     //text in the message
     details: {
