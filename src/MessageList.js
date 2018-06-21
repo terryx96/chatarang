@@ -25,7 +25,7 @@ class MessageList extends Component {
                                                 : this.props.roomName.name} room.</p>
                 </div>
                 {this.props.messages.map(msg => 
-                <Message key = {msg.id} message = {msg} user = {this.props.user}/>
+                <Message addReaction = {this.props.addReaction} key = {msg.id} message = {msg} user = {this.props.user}/>
                 )}
                 <div ref = {el => this.messageEnd = el}></div>
             </div>

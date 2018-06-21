@@ -15,6 +15,16 @@ class Chat extends Component {
         }
     }
 
+    addReaction = (message, emoji) => {
+        message.reactions = message.reactions || {};
+        message.reactions[emoji] = message.reactions[emoji] || [];
+        message.reactions[emoji].push(this.props.user);
+        const messages = [...this.state.messages];
+        const i = messages.findIndex(msg => msg.id = message.id)
+        messages[i] = message
+        this.setState({messages});
+    }
+
     componentDidMount(){
         this.syncMessages();
     }
@@ -43,7 +53,7 @@ class Chat extends Component {
         return (
             <div className = "Chat" style = {styles.chat}>
                 <ChatHeader removeRoom = {this.props.removeRoom} rooms = {this.props.rooms} roomName = {this.props.roomName} />
-                <MessageList messages = {this.state.messages} user = {this.props.user} roomName = {this.props.roomName}/>
+                <MessageList addReaction = {this.addReaction} messages = {this.state.messages} user = {this.props.user} roomName = {this.props.roomName}/>
                 <MessageForm addMessage = {this.addMessage} deleteMessage = {this.clear}/>
             </div>
         )

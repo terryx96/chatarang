@@ -13,23 +13,8 @@ class Message extends Component {
     }
 
     handleEmojiSelect = (emoji) => {
-        this.pushToReactions(emoji.colons)
+        this.props.addReaction(this.props.message, emoji.colons)
         this.togglePicker();
-    }
-
-    pushToReactions = (emojiColon) =>{
-        const name = `${emojiColon}`;
-        let reactions = {...this.state.reactions};
-        if(reactions[name]){
-            reactions[name].num +=1;
-            this.setState({reactions});
-            console.log('plus one')
-        }
-        else{
-            reactions[name] = {num: 1}
-            this.setState({reactions});
-            console.log('reaction added');
-        }
     }
 
     togglePicker = () => {
@@ -43,6 +28,8 @@ class Message extends Component {
                 <div className ={css(styles.details)}>
                     <Metadata message = {this.props.message} />
                     <div className = "body">{this.props.message.body}</div>
+
+
                     <button
                         className={`reactionButton ${css(styles.reactionButton)}`}
                         onClick = {this.togglePicker}>
@@ -69,7 +56,6 @@ const styles = StyleSheet.create({
         marginTop: "1rem",
         padding: '1rem',
         transition: 'backgroundColor .2s',
-        padding: '1rem 1rem',
         position: 'relative',
 
         ':hover':{
